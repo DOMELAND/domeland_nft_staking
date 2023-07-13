@@ -19,6 +19,7 @@ import {
 } from "../consts/contractAddresses";
 import styles from "../styles/Home.module.css";
 
+
 const Stake: NextPage = () => {
   const address = useAddress();
   const { contract: nftDropContract } = useContract(

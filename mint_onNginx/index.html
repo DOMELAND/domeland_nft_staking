@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOMELAND PASSPORT</title>
+  <script src="https://cdn.jsdelivr.net/npm/web3@1.6.1/dist/web3.min.js"></script>
+  <link rel="stylesheet" href="app.css">
+  <script>
+  //  ARB MAIN NET
+  // window.ethereum.request({ method: 'wallet_addEthereumChain', params: [{ chainId: '0xa4b1', chainName: 'Arbitrum', rpcUrls: ['https://arb1.arbitrum.io/rpc'], blockExplorerUrls: ['https://arbiscan.io/'] }] });
+ 
+  //  ARB TEST NET
+  window.ethereum.request({ method: 'wallet_addEthereumChain', params: [{ chainId: '0x66eed', chainName: 'Arbitrum Goerli', rpcUrls: ['https://goerli-rollup.arbitrum.io/rpc'], blockExplorerUrls: ['https://testnet.arbiscan.io/'] }] });
+ </script>
+</head>
+<body>
+  <div class="connect-section">
+    <button id="connect-wallet-button" class="connect-button">Connect Wallet</button>
+    <div id="wallet-info" class="not-connected">
+      <p>地址: <span id="wallet-address">未连接</span></p>
+      <p>余额: <span id="wallet-balance">0</span> ETH</p>
+    </div>
+  </div>
+
+  <main>
+    <h1>DOMELAND Unit #0 - ID Passport </h1>
+    <div id="mint-section" class="hidden">
+      <label for="mint-amount" class="mint-label">Mint Amount:</label>
+      <select id="mint-amount" class="mint-select">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+        <option value="13">13</option>
+        <option value="14">14</option>
+        <!-- ... -->
+        <option value="15">15</option>
+      </select>
+      <button id="mint-nft-button" disabled>Mint NFT</button>
+      <p id="mint-price"></p>
+    </div>
+    <button id="withdraw-button" class="hidden">Withdraw</button>
+    <p id="info-message" class="yellow-text"></p>
+  </main>
+<!-- index.html -->
+<script src="./app.js"></script>
+</body>
+</html>

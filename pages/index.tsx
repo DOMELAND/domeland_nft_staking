@@ -14,7 +14,8 @@ const Home: NextPage = () => {
         <div
           className={styles.optionSelectBox}
           role="button"
-          onClick={() => router.push(`/mint`)}
+         // onClick={() => router.push(`/mint`)}
+         onClick={()=>{window.location.href="https://aoo.domeland.vip/mint"}}
         >
           {/* Mint a new NFT */}
           <Image src="/icons/drop.webp" alt="drop" width={64} height={64} />

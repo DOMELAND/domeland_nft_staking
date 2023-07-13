@@ -42,3 +42,20 @@ body {
 h2 {
   font-size: 2rem;
 }
+
+
+/* button costum rules */
+
+.tw-web3button {
+  width: 75%;
+  height: 75%; 
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+.tw-web3button:hover {
+  width: 75%;
+  height: 75%; 
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+  transform: scale(1.05);
+}

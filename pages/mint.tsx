@@ -12,8 +12,7 @@ const Mint: NextPage = () => {
       <h1 className={styles.h1}>Mint An NFT!</h1>
 
       <p className={styles.explain}>
-        Here is where we use our <b>NFT Drop</b> contract to allow users to mint
-        one of the NFTs that we lazy minted.
+        Mint <b>DOMELAND</b> NFTs Dapp
       </p>
       <hr className={`${styles.smallDivider} ${styles.detailPageHr}`} />
 
@@ -29,7 +28,7 @@ const Mint: NextPage = () => {
           alert(error);
         }}
       >
-        Claim An NFT
+        Claim An DomeLand NFT
       </Web3Button>
     </div>
   );

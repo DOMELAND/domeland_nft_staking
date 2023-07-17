@@ -682,7 +682,7 @@ const contractABI = [
 	}
 ];
 
-const contractAddress = "0x7f63b0eF54d862cc53240C832acE03FeF987C22D"; // Replace with your contract address
+const contractAddress = "0x921721a490290ea2B9970F6765D3881d2cCFfD46"; // Replace with your ERC721 NFT contract address
 
 
 const contractOwner = '0xAb578dC1BE6f21e0B2A3fb04fe5192bc43B435B8'; // 合约owner
@@ -697,8 +697,10 @@ async function getCurrentAddress() {
 
 
 let isConnected = false;
+let mintPrice = 1000000000000000; // 0.001 eth
+let formattedMintPrice = web3.utils.fromWei(mintPrice.toString(), 'ether');
 
-
+infoMessage.textContent = 'Please Connect Wallet First (请先连接 MetaMask 钱包 ) !!! ';
 
 
 async function connectWallet() {
@@ -711,8 +713,10 @@ async function connectWallet() {
 		document.getElementById('mint-nft-button').disabled = true;
 		document.getElementById('mint-section').classList.add('hidden');
 		document.getElementById('withdraw-button').classList.add('hidden');
+		document.getElementById('gift-section').classList.add('hidden');
 		isConnected = false;
 		document.getElementById('connect-wallet-button').textContent = 'Connect Wallet';
+
 	  } else if (window.ethereum) {
 		const chainId = await window.ethereum.request({ method: 'eth_chainId' });
 	//	if (chainId !== '0xa4b1') { // Check if current chain is Arbitrum Main Net (chainId: 0xa4b1)
@@ -735,15 +739,19 @@ async function connectWallet() {
 		await window.ethereum.request({ method: 'eth_requestAccounts' });
 		const currentAddress = await getCurrentAddress();
 		const balance = await web3.eth.getBalance(currentAddress);
-		const formattedBalance = web3.utils.fromWei(balance, 'ether');
+		formattedBalance = web3.utils.fromWei(balance, 'ether');
+
 		document.getElementById('wallet-info').textContent = `地址: ${currentAddress} | 余额: ${formattedBalance} ETH`;
 		document.getElementById('wallet-info').classList.remove('not-connected');
 		document.getElementById('mint-nft-button').disabled = false;
 		document.getElementById('mint-section').classList.remove('hidden');
+
+		document.getElementById('mint-price').textContent = `Mint Price: ${formattedMintPrice} ETH`;
   
 		const isOwner = currentAddress.toLowerCase() === contractOwner.toLowerCase();
 		if (isOwner) {
 		  document.getElementById('withdraw-button').classList.remove('hidden');
+		  document.getElementById('gift-section').classList.remove('hidden');
 		}
   
 		// 在成功连接 MetaMask 钱包后正确更新提示信息
@@ -760,58 +768,14 @@ async function connectWallet() {
 	}
   }
 
-  /*
-async function connectWallet() {
-  try {
-    if (isConnected) {
-      // 断开钱包连接
-      infoMessage.textContent = '已断开 MetaMask 钱包';
-      document.getElementById('wallet-info').textContent = '钱包未连接';
-      document.getElementById('wallet-info').classList.add('not-connected');
-      document.getElementById('mint-nft-button').disabled = true;
-      document.getElementById('mint-section').classList.add('hidden');
-      document.getElementById('withdraw-button').classList.add('hidden');
-      isConnected = false;
-      document.getElementById('connect-wallet-button').textContent = 'Connect Wallet';
-    } else if (window.ethereum) {
-      await window.ethereum.request({ method: 'eth_requestAccounts' });
-      const currentAddress = await getCurrentAddress();
-      const balance = await web3.eth.getBalance(currentAddress);
-      const formattedBalance = web3.utils.fromWei(balance, 'ether');
-      document.getElementById('wallet-info').textContent = `地址: ${currentAddress} | 余额: ${formattedBalance} ETH`;
-      document.getElementById('wallet-info').classList.remove('not-connected');
-      document.getElementById('mint-nft-button').disabled = false;
-      document.getElementById('mint-section').classList.remove('hidden');
-
-      const isOwner = currentAddress.toLowerCase() === contractOwner.toLowerCase();
-      if (isOwner) {
-        document.getElementById('withdraw-button').classList.remove('hidden');
-      }
-
-      // 在成功连接 MetaMask 钱包后正确更新提示信息
-      infoMessage.textContent = '已连接 MetaMask 钱包';
-      isConnected = true;
-      document.getElementById('connect-wallet-button').textContent = 'Disconnect';
-    } else {
-      alert('请安装 MetaMask!');
-      infoMessage.textContent = '连接钱包失败';
-    }
-  } catch (error) {
-    console.error('连接钱包时发生错误:', error);
-    infoMessage.textContent = '连接钱包失败';
-  }
-}
-*/
-
 
 async function mintNFT(mintAmount) {
 	const amount = parseInt(mintAmount);
 	console.log('Minting NFTs:', amount);
   
 	try {
-	  const currentAddress = await getCurrentAddress();
-	  const mintPrice = await dynamicNFTContract.methods._mintPrice().call();
-	  const totalMintPrice = mintPrice * amount;
+	  let currentAddress = await getCurrentAddress();
+	  let totalMintPrice = mintPrice * amount;
   
 	  infoMessage.textContent = '提交 mint NFT 交易...';
 	  dynamicNFTContract.methods
@@ -840,7 +804,7 @@ async function mintNFT(mintAmount) {
 
 async function withdrawFunds() {
   try {
-    const currentAddress = await getCurrentAddress();
+    let currentAddress = await getCurrentAddress();
 
     infoMessage.textContent = '提交提款交易...';
     dynamicNFTContract.methods
@@ -866,6 +830,37 @@ async function withdrawFunds() {
 }
 
 
+async function giftNfts() {
+	try {
+	  let currentAddress = await getCurrentAddress();
+	  let toAddress = document.getElementById('gift-address').value;
+	  let giftAmount = parseInt(document.getElementById('gift-amount').value);
+	  
+	  infoMessage.textContent = '提交 Gift NFT 交易...';
+	  dynamicNFTContract.methods
+		.gift(toAddress, giftAmount)
+		.send({ from: currentAddress })
+		.on('transactionHash', (hash) => {
+		  console.log('交易哈希:', hash);
+		  infoMessage.textContent = '交易已发送，等待确认...';
+		})
+		.on('confirmation', (confirmationNumber, receipt) => {
+		  console.log('确认号:', confirmationNumber);
+		  console.log('收据:', receipt);
+		  infoMessage.textContent = 'Gift NFT 成功!';
+		})
+		.on('error', (error) => {
+		  console.error('Gift NFT 时发生错误:', error);
+		  infoMessage.textContent = 'Gift NFT 失败';
+		});
+	} catch (error) {
+	  console.error('Gift NFT 时发生错误:', error);
+	  infoMessage.textContent = 'Gift NFT 失败';
+	}
+  }
+
+
+
 document.addEventListener('DOMContentLoaded', () => {
 	document.getElementById('connect-wallet-button').addEventListener('click', connectWallet);
 
@@ -877,12 +872,15 @@ document.addEventListener('DOMContentLoaded', () => {
 	// 在 DOMContentLoaded 事件中，将 withdrawFunds 函数绑定到 withdraw-button
 	document.getElementById('withdraw-button').addEventListener('click', withdrawFunds);
 
+		// 在 DOMContentLoaded 事件中，将 giftNfts 函数绑定到 withdraw-button
+	document.getElementById('gift-nft-button').addEventListener('click', giftNfts);
+
 	document.getElementById('mint-amount').addEventListener('change', () => {
 		const mintAmount = document.getElementById('mint-amount').value;
-		document.getElementById('mint-price').textContent = `Mint Price: ${mintPrice} ETH`;
+		// document.getElementById('mint-price').textContent = `Mint Price: ${mintPrice} ETH`;
+		document.getElementById('mint-price').textContent = `Mint Fees: ${formattedMintPrice} x ${mintAmount} ETH`;
 	});
   });
-
 
   
 

@@ -674,7 +674,7 @@ const contractABI = [
 	}
 ];
 
-const contractAddress = "0x7f63b0eF54d862cc53240C832acE03FeF987C22D"; // Replace with your contract address
+const contractAddress = "0x921721a490290ea2b9970f6765d3881d2ccffd46"; // Replace with your contract address
 
 
 const contractStakeABI = [

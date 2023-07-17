@@ -21,7 +21,7 @@ const Home: NextPage = () => {
           <img src="/static/icons/drop.webp" alt="drop" width="64" height="64" />
           <h2 className={styles.selectBoxTitle}>Mint A DOMELAND NFT</h2>
           <p className={styles.selectBoxDescription}>
-             Mint an DOMELAND NFT from the collection.
+             Mint <b>DOMELAND</b> NFTs from domeland Contract.
           </p>
         </div>
 
@@ -34,8 +34,7 @@ const Home: NextPage = () => {
           <img src="/static/icons/token.webp" alt="token" width="64" height="64" />
           <h2 className={styles.selectBoxTitle}>Stake Your DomeLand NFTs</h2>
           <p className={styles.selectBoxDescription}>
-            Staking DOEMLAND deployed via <b>0xOffchain Labs Deploy</b>{" "}
-            to stake your DOMELAND NFTs, and earn <b>$DLD</b> tokens.
+            Staking your DOEMLAND NFTs, and earn <b>$DLD</b> tokens.
           </p>
         </div>
       </div>

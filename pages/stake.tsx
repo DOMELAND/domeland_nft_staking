@@ -63,7 +63,7 @@ const Stake: NextPage = () => {
   }
 
   if (isLoading) {
-    return <div>Loading (加载中) ...... </div>;
+    return <div>Loading ...... </div>;
   }
 
   return (

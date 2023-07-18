@@ -7,7 +7,16 @@ const activeChain = "arbitrum-goerli";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <ThirdwebProvider activeChain={activeChain}>
+    <ThirdwebProvider 
+    activeChain={activeChain}
+    dAppMeta={{
+        name: "DOMEStaker",
+        description: "Domeland Staker",
+        logoUrl: "https://twitter.com/0xOffchain",
+        url: "https://app.domeland.vip",
+        isDarkMode: true,
+      }}
+    >
       <Component {...pageProps} />
     </ThirdwebProvider>
   );

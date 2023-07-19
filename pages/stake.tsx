@@ -109,7 +109,19 @@ const Stake: NextPage = () => {
         <>
           <h2 className={styles.h2}>Your $DLD Token</h2>
           <h5 className={styles.h5}>$DLD Address : 0x866f63535993887A78234e16fE3c88298E81Ac1c</h5>
-          <button className="button" onClick={importToken}>
+          <button  
+           style={{
+              backgroundColor: 'rgba(0, 0, 0, 0.5)', 
+              color: 'white', 
+              borderRadius: '50%', 
+              padding: '10px 20px',
+              border: 'none',
+              cursor: 'pointer',
+              fontSize: '16px',
+              outline: 'none'
+            }}
+            onClick={importToken}
+          >
             Import $DLD
           </button>
 

@@ -26,17 +26,6 @@
   color:#b6b2b2;
 }
 
-.button {
-  background-color: rgba(0, 0, 0, 0.5);
-  color: white;
-  border-radius: 12px;
-  padding: 10px 20px;
-  border: none;
-  cursor: pointer;
-  font-size: 16px;
-  outline: none;
-}
-
 .explain {
   font-size: 1.125rem;
   max-width: 1200px;

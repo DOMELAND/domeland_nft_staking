@@ -75,7 +75,7 @@ const Stake: NextPage = () => {
         <ConnectWallet />
       ) : (
         <>
-          <h2>Your Tokens</h2>
+          <h2>Your $DLD</h2>
           <div className={styles.tokenGrid}>
             <div className={styles.tokenItem}>
               <h3 className={styles.tokenLabel}>Claimable Rewards</h3>
@@ -89,7 +89,7 @@ const Stake: NextPage = () => {
               </p>
             </div>
             <div className={styles.tokenItem}>
-              <h3 className={styles.tokenLabel}>Current Balance</h3>
+              <h3 className={styles.tokenLabel}>Wallet Balance</h3>
               <p className={styles.tokenValue}>
                 <b>{tokenBalance?.displayValue}</b> {tokenBalance?.symbol}
               </p>
@@ -116,7 +116,7 @@ const Stake: NextPage = () => {
           </div>
 
           <hr className={`${styles.divider} ${styles.spacerTop}`} />
-          <h2>Your Unstaked DOMELAND NFTs</h2>
+          <h2>Your Freed DOMELAND NFTs</h2>
           <div className={styles.nftBoxGrid}>
             {ownedNfts?.map((nft) => (
               <div className={styles.nftBox} key={nft.metadata.id.toString()}>

@@ -3,12 +3,31 @@ import type { AppProps } from "next/app";
 import "../styles/globals.css";
 
 // This is the chain your dApp will work on.
-const activeChain = "arbitrum-goerli";
+// const activeChain = "arbitrum-goerli";
+
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ThirdwebProvider 
-    activeChain={activeChain}
+    activeChain={{
+      // === Required information for connecting to the network === \\
+      chainId: 421613, // Chain ID of the network
+      // Array of RPC URLs to use
+      rpc: ["https://goerli-rollup.arbitrum.io/rpc"],
+    
+      // === Information for adding the network to your wallet (how it will appear for first time users) === \\
+      // Information about the chain's native currency (i.e. the currency that is used to pay for gas)
+      nativeCurrency: {
+        decimals: 18,
+        name: "Arbiturm Goerli",
+        symbol: "ARBG",
+      },
+      shortName: "Arbitrum Goerli", // Display value shown in the wallet UI
+      slug: "arbgo", // Display value shown in the wallet UI
+      testnet: true, // Boolean indicating whether the chain is a testnet or mainnet
+      chain: "arbitrum-goerli", // Name of the network
+      name: "Arbitrum Goerli Testnet", // Name of the network
+    }}
     dAppMeta={{
         name: "DOMEStaker",
         description: "Domeland Staker",

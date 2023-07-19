@@ -19,7 +19,11 @@ import {
 } from "../consts/contractAddresses";
 import styles from "../styles/Home.module.css";
 
-const DLDAddress = "0x866f63535993887A78234e16fE3c88298E81Ac1c";
+const tokenAddress = "0x866f63535993887A78234e16fE3c88298E81Ac1c";
+const tokenSymbol = "DLD";  // the token symbol
+const tokenDecimals = 18;  // the token decimals
+const tokenImage = "http://placehold.it/350x350";  // the token image
+
 
 
 const Stake: NextPage = () => {
@@ -65,24 +69,28 @@ const Stake: NextPage = () => {
   }
 
   async function importToken() {
-    if (!window.ethereum) {
-      alert("Please install Metamask to import tokens.");
-      return;
-    }
     try {
-      await window.ethereum.request({
+      // wasAdded is a boolean. Like any RPC method, an error may be thrown.
+      const wasAdded = await window.ethereum.request({
         method: 'wallet_watchAsset',
         params: {
-          type: 'ERC20',
+          type: 'ERC20',  // Initially only supports ERC20, but eventually more!
           options: {
-            address: DLDAddress,
-            symbol: 'DLD',
-            decimals: 18,
+            address: tokenAddress, // The address that the token is at.
+            symbol: tokenSymbol, // A ticker symbol or shorthand, up to 5 chars.
+            decimals: tokenDecimals, // The number of decimals in the token
+            image: tokenImage, // A string url of the token logo
           },
         },
       });
+
+      if (wasAdded) {
+        console.log('Thanks for your interest!');
+      } else {
+        console.log('Your loss!');
+      }
     } catch (error) {
-      console.error(error);
+      console.log(error);
     }
   }
 
@@ -129,9 +137,9 @@ const Stake: NextPage = () => {
             Withdraw Rewards
           </Web3Button>
 
-          <Web3Button onClick={importToken}>
+          <button onClick={importToken}>
             Import $DLD
-          </Web3Button>
+          </button>
 
           <hr className={`${styles.divider} ${styles.spacerTop}`} />
           <h2 className={styles.h2}>Your Staked DOMELAND NFTs</h2>

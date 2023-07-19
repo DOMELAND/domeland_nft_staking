@@ -54,6 +54,10 @@ function MyApp({ Component, pageProps }: AppProps) {
       }}
     storageInterface={storage}
     clientId="e7ec4f3dd55f91ca9a3f313df231ddb4"
+    authConfig={{
+      authUrl: "/",
+      domain: "https://app.domeland.vip",
+    }}
     >
       <Component {...pageProps} />
     </ThirdwebProvider>

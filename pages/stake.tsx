@@ -68,7 +68,7 @@ const Stake: NextPage = () => {
 
   return (
     <div className={styles.container}>
-      <h1 className={styles.h1}>Stake Your DOMELAND NFTs</h1>
+      <h1 className={styles.h1}>STAKE DOMELAND NFTs</h1>
       <hr className={`${styles.divider} ${styles.spacerTop}`} />
 
       {!address ? (
@@ -76,9 +76,11 @@ const Stake: NextPage = () => {
       ) : (
         <>
           <h2>Your $DLD</h2>
+          <h5>$DLD Address : 0x866f63535993887A78234e16fE3c88298E81Ac1c</h5>
+
           <div className={styles.tokenGrid}>
             <div className={styles.tokenItem}>
-              <h3 className={styles.tokenLabel}>Claimable Rewards</h3>
+              <h3 className={styles.tokenLabel}>Current Rewards</h3>
               <p className={styles.tokenValue}>
                 <b>
                   {!claimableRewards
@@ -100,7 +102,7 @@ const Stake: NextPage = () => {
             action={(contract) => contract.call("claimRewards")}
             contractAddress={stakingContractAddress}
           >
-            Claim Rewards
+            Whthdraw Rewards
           </Web3Button>
 
           <hr className={`${styles.divider} ${styles.spacerTop}`} />

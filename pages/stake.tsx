@@ -75,8 +75,8 @@ const Stake: NextPage = () => {
         <ConnectWallet />
       ) : (
         <>
-          <h2>Your $DLD Token</h2>
-          <h5>$DLD Address : 0x866f63535993887A78234e16fE3c88298E81Ac1c</h5>
+          <h2 className={styles.h2}>Your $DLD Token</h2>
+          <h5 className={styles.h5}>$DLD Address : 0x866f63535993887A78234e16fE3c88298E81Ac1c</h5>
 
           <div className={styles.tokenGrid}>
             <div className={styles.tokenItem}>
@@ -106,7 +106,7 @@ const Stake: NextPage = () => {
           </Web3Button>
 
           <hr className={`${styles.divider} ${styles.spacerTop}`} />
-          <h2>Your Staked DOMELAND NFTs</h2>
+          <h2 className={styles.h2}>Your Staked DOMELAND NFTs</h2>
           <div className={styles.nftBoxGrid}>
             {stakedTokens &&
               stakedTokens[0]?.map((stakedToken: BigNumber) => (
@@ -118,7 +118,7 @@ const Stake: NextPage = () => {
           </div>
 
           <hr className={`${styles.divider} ${styles.spacerTop}`} />
-          <h2>Your Freed DOMELAND NFTs</h2>
+          <h2 className={styles.h2}>Your Freed DOMELAND NFTs</h2>
           <div className={styles.nftBoxGrid}>
             {ownedNfts?.map((nft) => (
               <div className={styles.nftBox} key={nft.metadata.id.toString()}>

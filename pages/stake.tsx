@@ -109,6 +109,9 @@ const Stake: NextPage = () => {
         <>
           <h2 className={styles.h2}>Your $DLD Token</h2>
           <h5 className={styles.h5}>$DLD Address : 0x866f63535993887A78234e16fE3c88298E81Ac1c</h5>
+          <button className="mybtn" onClick={importToken}>
+            [Import $DLD]
+          </button>
 
           <div className={styles.tokenGrid}>
             <div className={styles.tokenItem}>
@@ -136,10 +139,6 @@ const Stake: NextPage = () => {
           >
             Withdraw Rewards
           </Web3Button>
-
-          <button onClick={importToken}>
-            Import $DLD
-          </button>
 
           <hr className={`${styles.divider} ${styles.spacerTop}`} />
           <h2 className={styles.h2}>Your Staked DOMELAND NFTs</h2>

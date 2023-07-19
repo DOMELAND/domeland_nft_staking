@@ -16,6 +16,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         url: "https://app.domeland.vip",
         isDarkMode: true,
       }}
+    clientId="e7ec4f3dd55f91ca9a3f313df231ddb4"
     >
       <Component {...pageProps} />
     </ThirdwebProvider>

@@ -116,7 +116,7 @@ const Stake: NextPage = () => {
               padding: '10px 20px',
               border: 'none',
               cursor: 'pointer',
-              fontSize: '14px',
+              fontSize: '16px',
               outline: 'none'
             }}
             onClick={importToken}

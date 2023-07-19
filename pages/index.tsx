@@ -18,7 +18,7 @@ const Home: NextPage = () => {
          onClick={()=>{window.location.href="https://app.domeland.vip/mint"}}
         >
           {/* Mint a new NFT */}
-          <img src="/static/icons/drop.webp" alt="drop" width="64" height="64" />
+          <img src="/static/icons/drop.png" alt="drop" width="64" height="64" />
           <h2 className={styles.selectBoxTitle}>Mint A DOMELAND NFT</h2>
           <p className={styles.selectBoxDescription}>
              Mint <b>DOMELAND</b> NFTs from domeland Contract.
@@ -31,7 +31,7 @@ const Home: NextPage = () => {
           onClick={() => router.push(`/stake`)}
         >
           {/* Staking an NFT */}
-          <img src="/static/icons/token.webp" alt="token" width="64" height="64" />
+          <img src="/static/icons/token.png" alt="token" width="64" height="64" />
           <h2 className={styles.selectBoxTitle}>Stake Your DomeLand NFTs</h2>
           <p className={styles.selectBoxDescription}>
             Staking your DOEMLAND NFTs, and earn <b>$DLD</b> tokens.

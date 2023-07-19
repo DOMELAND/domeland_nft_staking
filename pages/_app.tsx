@@ -2,6 +2,23 @@ import { ThirdwebProvider } from "@thirdweb-dev/react";
 import type { AppProps } from "next/app";
 import "../styles/globals.css";
 
+import {
+  ThirdwebStorage,
+  StorageDownloader,
+  IpfsUploader,
+} from "@thirdweb-dev/storage";
+
+// Configure a custom ThirdwebStorage instance
+const gatewayUrls = {
+  "ipfs://": [
+    "https://cloudflare-ipfs.com/ipfs/",
+    "https://ipfs.io/ipfs/",
+    "https://gateway.ipfscdn.io/ipfs/",
+  ],
+};
+
+const storage = new ThirdwebStorage({ gatewayUrls });
+
 // This is the chain your dApp will work on.
 // const activeChain = "arbitrum-goerli";
 
@@ -35,6 +52,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         url: "https://app.domeland.vip",
         isDarkMode: true,
       }}
+    storageInterface={storage}
     clientId="e7ec4f3dd55f91ca9a3f313df231ddb4"
     >
       <Component {...pageProps} />

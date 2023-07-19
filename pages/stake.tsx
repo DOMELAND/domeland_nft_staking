@@ -19,6 +19,8 @@ import {
 } from "../consts/contractAddresses";
 import styles from "../styles/Home.module.css";
 
+const DLDAddress = "0x866f63535993887A78234e16fE3c88298E81Ac1c";
+
 
 const Stake: NextPage = () => {
   const address = useAddress();
@@ -62,6 +64,28 @@ const Stake: NextPage = () => {
     await contract?.call("stake", [[id]]);
   }
 
+  async function importToken() {
+    if (!window.ethereum) {
+      alert("Please install Metamask to import tokens.");
+      return;
+    }
+    try {
+      await window.ethereum.request({
+        method: 'wallet_watchAsset',
+        params: {
+          type: 'ERC20',
+          options: {
+            address: DLDAddress,
+            symbol: 'DLD',
+            decimals: 18,
+          },
+        },
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
   if (isLoading) {
     return <div>Loading ...... </div>;
   }
@@ -102,7 +126,11 @@ const Stake: NextPage = () => {
             action={(contract) => contract.call("claimRewards")}
             contractAddress={stakingContractAddress}
           >
-            Whthdraw Rewards
+            Withdraw Rewards
+          </Web3Button>
+
+          <Web3Button onClick={importToken}>
+            Import $DLD
           </Web3Button>
 
           <hr className={`${styles.divider} ${styles.spacerTop}`} />

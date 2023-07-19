@@ -75,7 +75,7 @@ const Stake: NextPage = () => {
         <ConnectWallet />
       ) : (
         <>
-          <h2>Your $DLD</h2>
+          <h2>Your $DLD Token</h2>
           <h5>$DLD Address : 0x866f63535993887A78234e16fE3c88298E81Ac1c</h5>
 
           <div className={styles.tokenGrid}>

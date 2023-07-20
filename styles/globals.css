@@ -13,7 +13,6 @@ body {
     /* URL path is relative to the location of the CSS file */
     background-image: url('/static/images/bg.webp') !important;
     background-position: center center;
-    background-repeat: no-repeat !important;
     background-attachment: scroll !important;  /* Change this value from `fixed` to `scroll` */
     background-size: cover;
     /*---*/

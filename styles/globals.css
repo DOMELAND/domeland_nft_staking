@@ -32,7 +32,7 @@ background-position: bottom;
 opacity: 0.7; /* Adjust the opacity to make the moon image semi-transparent */
 top: 0;
 left: 0;
-bottom: 0;
+bottom: 38%;
 right: 0;
 position: absolute;
 z-index: -1;  /* Ensure the moon image is below other content */

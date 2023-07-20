@@ -27,7 +27,7 @@ body::before {
 content: "";
 background-image: url('/static/images/moon.webp');
 background-repeat: no-repeat;
-background-size: cover;
+background-size: 50%; /* background-size: cover;  Set the size to 50% of the original size */
 background-position: bottom;
 opacity: 0.7; /* Adjust the opacity to make the moon image semi-transparent */
 top: 0;

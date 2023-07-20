@@ -112,8 +112,8 @@ const Stake: NextPage = () => {
            style={{
               backgroundColor: 'rgba(0, 0, 0, 0.5)', 
               color: 'grey', 
-              borderRadius: '10%', 
-              padding: '10px 20px',
+              borderRadius: '3%', 
+              padding: '8px 20px',
               border: 'solid',
               cursor: 'pointer',
               fontSize: '16px',

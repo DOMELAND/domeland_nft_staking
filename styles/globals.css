@@ -7,13 +7,40 @@
   box-sizing: border-box;
 }
 
+
 /* Set core body defaults */
 body {
+    /* URL path is relative to the location of the CSS file */
+    background-image: url('/images/bg.webp');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: scroll;  /* Change this value from `fixed` to `scroll` */
+    background-size: cover;
+    /*---*/
   min-height: 100vh;
   text-rendering: optimizeSpeed;
   line-height: 1.5;
   padding-bottom: 250px;
 }
+
+
+body::before {
+content: "";
+background-image: url('/images/moon.webp');
+background-repeat: no-repeat;
+background-size: cover;
+background-position: bottom;
+opacity: 0.5; /* Adjust the opacity to make the moon image semi-transparent */
+top: 0;
+left: 0;
+bottom: 0;
+right: 0;
+position: absolute;
+z-index: -1;  /* Ensure the moon image is below other content */
+}
+
+
+
 
 /* Inherit fonts for inputs and buttons */
 input,

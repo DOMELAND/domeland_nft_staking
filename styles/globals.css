@@ -11,7 +11,7 @@
 /* Set core body defaults */
 body {
     /* URL path is relative to the location of the CSS file */
-    background-image: url('/images/bg.webp');
+    background-image: url('/static/images/bg.webp');
     background-position: center center;
     background-repeat: no-repeat;
     background-attachment: scroll;  /* Change this value from `fixed` to `scroll` */
@@ -26,7 +26,7 @@ body {
 
 body::before {
 content: "";
-background-image: url('/images/moon.webp');
+background-image: url('/static/images/moon.webp');
 background-repeat: no-repeat;
 background-size: cover;
 background-position: bottom;

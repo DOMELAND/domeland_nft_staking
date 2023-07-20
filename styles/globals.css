@@ -11,10 +11,10 @@
 /* Set core body defaults */
 body {
     /* URL path is relative to the location of the CSS file */
-    background-image: url('/static/images/bg.webp');
+    background-image: url('/static/images/bg.webp') !important;
     background-position: center center;
-    background-repeat: no-repeat;
-    background-attachment: scroll;  /* Change this value from `fixed` to `scroll` */
+    background-repeat: no-repeat !important;
+    background-attachment: scroll !important;  /* Change this value from `fixed` to `scroll` */
     background-size: cover;
     /*---*/
   min-height: 100vh;
@@ -30,7 +30,7 @@ background-image: url('/static/images/moon.webp');
 background-repeat: no-repeat;
 background-size: cover;
 background-position: bottom;
-opacity: 0.5; /* Adjust the opacity to make the moon image semi-transparent */
+opacity: 0.7; /* Adjust the opacity to make the moon image semi-transparent */
 top: 0;
 left: 0;
 bottom: 0;

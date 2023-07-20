@@ -148,7 +148,7 @@ const Stake: NextPage = () => {
             action={(contract) => contract.call("claimRewards")}
             contractAddress={stakingContractAddress}
           >
-            Withdraw Rewards
+            Withdraw
           </Web3Button>
 
           <hr className={`${styles.divider} ${styles.spacerTop}`} />

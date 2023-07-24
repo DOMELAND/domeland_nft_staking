@@ -697,7 +697,7 @@ async function getCurrentAddress() {
 
 
 let isConnected = false;
-let mintPrice = 100000000000000; // 0.01 eth
+let mintPrice = 10000000000000; // 0.001 eth
 let formattedMintPrice = web3.utils.fromWei(mintPrice.toString(), 'ether');
 
 infoMessage.textContent = 'Please Connect Wallet First !!! ';

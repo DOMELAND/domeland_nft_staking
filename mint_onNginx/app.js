@@ -776,6 +776,7 @@ async function mintNFT(mintAmount) {
 	try {
 	  let currentAddress = await getCurrentAddress();
 	  let totalMintPrice = mintPrice * amount;
+	  console.log('Minting totalMintPrice:', totalMintPrice);
   
 	  infoMessage.textContent = 'Commit Mint NFT TX...';
 	  dynamicNFTContract.methods

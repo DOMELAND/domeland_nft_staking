@@ -63,14 +63,13 @@ const Stake: NextPage = () => {
       */
 
       // 如果claimableRewards发生变化，则添加动画类
-      if (stakeInfo[1] && claimableRewards && !stakeInfo[1].eq(claimableRewards)) {
-        if (rewardsRef.current) {
-          rewardsRef.current.classList.add('flashAndGrow');
-          setTimeout(() => {
-              rewardsRef.current?.classList.remove('flashAndGrow');
-          }, 2000);
-        }
+      if (rewardsRef.current) {
+        rewardsRef.current.classList.add('flashAndGrow');
+        setTimeout(() => {
+            rewardsRef.current?.classList.remove('flashAndGrow');
+        }, 2000);
       }
+      
       
       setClaimableRewards(stakeInfo[1]);
 

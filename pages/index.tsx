@@ -2,12 +2,17 @@ import type { NextPage } from "next";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import styles from "../styles/Home.module.css";
+import Head from 'next/head';  // 引入 Head 组件
 
 const Home: NextPage = () => {
   const router = useRouter();
 
   return (
     <div className={styles.container}>
+      {/* 添加 Head 组件并设置 favicon */}
+      <Head>
+         <link rel="icon" href="/static/favicon.ico" />
+      </Head>
       {/* Top Section */}
       <h1 className={styles.h1}>0xOffchain Labs - DomeLand Staking Contract</h1>
       <div className={styles.nftBoxGrid}>

@@ -45,7 +45,7 @@ const Stake: NextPage = () => {
     address,
   ]);
 
-  const rewardsRef = useRef();  // 定义 rewardsRef
+  const rewardsRef = useRef<HTMLDivElement | null>(null);  // 定义 rewardsRef
 
   useEffect(() => {
     if (!contract || !address) return;
@@ -64,11 +64,12 @@ const Stake: NextPage = () => {
 
       // 如果claimableRewards发生变化，则添加动画类
       if (stakeInfo[1] && claimableRewards && !stakeInfo[1].eq(claimableRewards)) {
-        rewardsRef.current.classList.add('flashAndGrow');
-        // 在动画结束后，移除动画类
-        setTimeout(() => {
-          rewardsRef.current.classList.remove('flashAndGrow');
-        }, 1000);  // 这个时间应该和你的CSS动画时间相同
+        if (rewardsRef.current) {
+          rewardsRef.current.classList.add('flashAndGrow');
+          setTimeout(() => {
+              rewardsRef.current?.classList.remove('flashAndGrow');
+          }, 1000);
+        }
       }
       
       setClaimableRewards(stakeInfo[1]);

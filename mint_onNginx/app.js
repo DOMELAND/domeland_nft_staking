@@ -3,7 +3,7 @@ let web3;
 if (typeof window.ethereum !== 'undefined') {
   web3 = new Web3(window.ethereum);
 } else {
-  alert('请安装 MetaMask!');
+  alert('Install MetaMask First!');
 }
 
 const contractABI = [
@@ -697,10 +697,10 @@ async function getCurrentAddress() {
 
 
 let isConnected = false;
-let mintPrice = 1000000000000000; // 0.001 eth
+let mintPrice = 100000000000000; // 0.01 eth
 let formattedMintPrice = web3.utils.fromWei(mintPrice.toString(), 'ether');
 
-infoMessage.textContent = 'Please Connect Wallet First (请先连接 MetaMask 钱包 ) !!! ';
+infoMessage.textContent = 'Please Connect Wallet First !!! ';
 
 
 async function connectWallet() {
@@ -721,14 +721,14 @@ async function connectWallet() {
 		const chainId = await window.ethereum.request({ method: 'eth_chainId' });
 	//	if (chainId !== '0xa4b1') { // Check if current chain is Arbitrum Main Net (chainId: 0xa4b1)
 		if (chainId !== '0x66eed') { // Check if current chain is Arbitrum Test Net (chainId: 0x66eed)
-		  const switchNetwork = confirm('请将 MetaMask 钱包切换到 Arbitrum 网络。是否继续？');
+		  const switchNetwork = confirm('Switch Network to Arbitrum , Confirm Pls？');
 		  if (switchNetwork) {
 			try {
 	//		  await window.ethereum.request({ method: 'wallet_switchEthereumChain', params: [{ chainId: '0xa4b1' }] });
 			  await window.ethereum.request({ method: 'wallet_switchEthereumChain', params: [{ chainId: '0x66eed' }] });			  
 			} catch (error) {
-			  console.error('切换网络时发生错误:', error);
-			  infoMessage.textContent = '切换网络失败';
+			  console.error('Swich Network Error:', error);
+			  infoMessage.textContent = 'Swich Network Fail';
 			  return;
 			}
 		  } else {
@@ -741,7 +741,7 @@ async function connectWallet() {
 		const balance = await web3.eth.getBalance(currentAddress);
 		formattedBalance = web3.utils.fromWei(balance, 'ether');
 
-		document.getElementById('wallet-info').textContent = `地址: ${currentAddress} | 余额: ${formattedBalance} ETH`;
+		document.getElementById('wallet-info').textContent = `ADDR: ${currentAddress} | BALANCE: ${formattedBalance} ETH`;
 		document.getElementById('wallet-info').classList.remove('not-connected');
 		document.getElementById('mint-nft-button').disabled = false;
 		document.getElementById('mint-section').classList.remove('hidden');
@@ -755,16 +755,16 @@ async function connectWallet() {
 		}
   
 		// 在成功连接 MetaMask 钱包后正确更新提示信息
-		infoMessage.textContent = '已连接 MetaMask 钱包';
+		infoMessage.textContent = 'MetaMask Connected OK!';
 		isConnected = true;
 		document.getElementById('connect-wallet-button').textContent = 'Disconnect';
 	  } else {
-		alert('请安装 MetaMask!');
-		infoMessage.textContent = '连接钱包失败';
+		alert('Install MetaMask Please!');
+		infoMessage.textContent = 'Connect Wallet Fail!';
 	  }
 	} catch (error) {
-	  console.error('连接钱包时发生错误:', error);
-	  infoMessage.textContent = '连接钱包失败';
+	  console.error('Connect Wallet Error:', error);
+	  infoMessage.textContent = 'Connect Wallet Fail!';
 	}
   }
 
@@ -777,26 +777,26 @@ async function mintNFT(mintAmount) {
 	  let currentAddress = await getCurrentAddress();
 	  let totalMintPrice = mintPrice * amount;
   
-	  infoMessage.textContent = '提交 mint NFT 交易...';
+	  infoMessage.textContent = 'Commit Mint NFT TX...';
 	  dynamicNFTContract.methods
 		.mint(amount)
 		.send({ from: currentAddress, value: totalMintPrice })
 		.on('transactionHash', (hash) => {
-		  console.log('交易哈希:', hash);
-		  infoMessage.textContent = '交易已发送，等待确认...';
+		  console.log('TX Hash:', hash);
+		  infoMessage.textContent = 'TX Sended，Waiting Confirmation...';
 		})
 		.on('confirmation', (confirmationNumber, receipt) => {
 		  console.log('确认号:', confirmationNumber);
 		  console.log('收据:', receipt);
-		  infoMessage.textContent = 'Mint NFT 成功!';
+		  infoMessage.textContent = 'Mint NFT Sucdessful!';
 		})
 		.on('error', (error) => {
-		  console.error('购买 NFT 时发生错误:', error);
-		  infoMessage.textContent = 'Mint NFT 失败';
+		  console.error('Mint NFT Error:', error);
+		  infoMessage.textContent = 'Mint NFT Fail!';
 		});
 	} catch (error) {
-	  console.error('购买 NFT 时发生错误:', error);
-	  infoMessage.textContent = 'Mint NFT 失败';
+	  console.error('Mint NFT Error:', error);
+	  infoMessage.textContent = 'Mint NFT Fail!';
 	}
   }
 
@@ -806,26 +806,26 @@ async function withdrawFunds() {
   try {
     let currentAddress = await getCurrentAddress();
 
-    infoMessage.textContent = '提交提款交易...';
+    infoMessage.textContent = 'Commit Withdraw TX...';
     dynamicNFTContract.methods
       .withdraw()
       .send({ from: currentAddress })
       .on('transactionHash', (hash) => {
-        console.log('交易哈希:', hash);
-        infoMessage.textContent = '交易已发送，等待确认...';
+        console.log('TX Hash:', hash);
+        infoMessage.textContent = 'TX Sended，Waiting Confirmation...';
       })
       .on('confirmation', (confirmationNumber, receipt) => {
-        console.log('确认号:', confirmationNumber);
-        console.log('收据:', receipt);
-        infoMessage.textContent = '提款成功!';
+        console.log('Confirmation Num:', confirmationNumber);
+        console.log('Receipt:', receipt);
+        infoMessage.textContent = 'Withdraw Successful!';
       })
       .on('error', (error) => {
-        console.error('提款时发生错误:', error);
-        infoMessage.textContent = '提款失败';
+        console.error('withdraw Error:', error);
+        infoMessage.textContent = 'Withdraw Failed!';
       });
   } catch (error) {
-    console.error('提款时发生错误:', error);
-    infoMessage.textContent = '提款失败';
+    console.error('withdraw Error:', error);
+    infoMessage.textContent = 'Withdraw Failed!';
   }
 }
 
@@ -836,26 +836,26 @@ async function giftNfts() {
 	  let toAddress = document.getElementById('gift-address').value;
 	  let giftAmount = parseInt(document.getElementById('gift-amount').value);
 	  
-	  infoMessage.textContent = '提交 Gift NFT 交易...';
+	  infoMessage.textContent = 'Commit Gift NFT TX...';
 	  dynamicNFTContract.methods
 		.gift(toAddress, giftAmount)
 		.send({ from: currentAddress })
 		.on('transactionHash', (hash) => {
-		  console.log('交易哈希:', hash);
-		  infoMessage.textContent = '交易已发送，等待确认...';
+		  console.log('TX Hash:', hash);
+		  infoMessage.textContent = 'TX Sended，Waiting Confirmation...';
 		})
 		.on('confirmation', (confirmationNumber, receipt) => {
-		  console.log('确认号:', confirmationNumber);
-		  console.log('收据:', receipt);
-		  infoMessage.textContent = 'Gift NFT 成功!';
+		  console.log('Confirmation Num:', confirmationNumber);
+		  console.log('Receipt:', receipt);
+		  infoMessage.textContent = 'Gift NFT Successful!';
 		})
 		.on('error', (error) => {
-		  console.error('Gift NFT 时发生错误:', error);
-		  infoMessage.textContent = 'Gift NFT 失败';
+		  console.error('Gift NFT Error:', error);
+		  infoMessage.textContent = 'Gift NFT Failed';
 		});
 	} catch (error) {
-	  console.error('Gift NFT 时发生错误:', error);
-	  infoMessage.textContent = 'Gift NFT 失败';
+	  console.error('Gift NFT Error:', error);
+	  infoMessage.textContent = 'Gift NFT Failed';
 	}
   }
 

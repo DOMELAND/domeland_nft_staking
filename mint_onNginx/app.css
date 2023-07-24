@@ -1,11 +1,10 @@
 body {
-    /* URL path is relative to the location of the CSS file 
+    /* URL path is relative to the location of the CSS file     */
     background-image: url('./images/bg.webp'); 
     background-position: center center;
     background-repeat: no-repeat;
     background-attachment: scroll;  
     background-size: cover;
-    */
     /*---*/
   background-color: #100e17;
   font-family: "IBM Plex Sans", sans-serif;
@@ -14,7 +13,7 @@ body {
   padding: 0;
 }
 
-/* -----
+/* ----------- */
 body::before {
   content: "";
   background-image: url('./images/moon.webp');
@@ -29,7 +28,7 @@ body::before {
   position: absolute;
   z-index: -1;  
 }
------- */
+
 
 main {
   display: flex;

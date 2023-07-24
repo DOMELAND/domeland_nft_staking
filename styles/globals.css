@@ -10,12 +10,12 @@
 
 /* Set core body defaults */
 body {
-    /* URL path is relative to the location of the CSS file 
+    /* URL path is relative to the location of the CSS file     */
     background-image: url('/static/images/bg.webp') !important;
     background-position: center center;
     background-attachment: scroll !important; 
     background-size: cover;
-    */
+
     /*---*/
   min-height: 100vh;
   text-rendering: optimizeSpeed;
@@ -23,7 +23,7 @@ body {
   padding-bottom: 250px;
 }
 
-/* ----
+/* ---- ----- */
 body::before {
 content: "";
 background-image: url('/static/images/moon.webp');
@@ -38,7 +38,7 @@ right: 0;
 position: absolute;
 z-index: -1;  
 }
- ----- */
+
 
 
 /* Inherit fonts for inputs and buttons */

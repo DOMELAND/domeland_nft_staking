@@ -24,6 +24,7 @@ const tokenSymbol = "DLD";  // the token symbol
 const tokenDecimals = 18;  // the token decimals
 const tokenImage = "http://placehold.it/350x350";  // the token image
 
+const refreshtime = 5000;
 
 
 const Stake: NextPage = () => {
@@ -47,12 +48,21 @@ const Stake: NextPage = () => {
   useEffect(() => {
     if (!contract || !address) return;
 
+    let timer: NodeJS.Timeout;
+
     async function loadClaimableRewards() {
       const stakeInfo = await contract?.call("getStakeInfo", [address]);
       setClaimableRewards(stakeInfo[1]);
     }
 
     loadClaimableRewards();
+
+    // 设置定时器每refreshtime秒刷新一次数据，在异步操作完成后再设置下一个定时器
+    timer = setTimeout(loadClaimableRewards, refreshtime);
+
+    // 在组件卸载时清除定时器
+    return () => clearTimeout(timer);
+
   }, [address, contract]);
 
   async function stakeNft(id: string) {

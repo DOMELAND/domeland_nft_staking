@@ -10,7 +10,7 @@ import {
 } from "@thirdweb-dev/react";
 import { BigNumber, ethers } from "ethers";
 import type { NextPage } from "next";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import NFTCard from "../components/NFTCard";
 import {
   nftDropContractAddress,
@@ -45,7 +45,6 @@ const Stake: NextPage = () => {
     address,
   ]);
 
-  const rewardsRef = useRef<HTMLDivElement | null>(null);  // 定义 rewardsRef
 
   useEffect(() => {
     if (!contract || !address) return;
@@ -55,22 +54,6 @@ const Stake: NextPage = () => {
     async function loadClaimableRewards() {
       const stakeInfo = await contract?.call("getStakeInfo", [address]);
 
-      // 如果claimableRewards发生变化，则添加动画类
-      /*
-      if (stakeInfo[1] !== claimableRewards) {
-        rewardsRef.current.classList.add('flashAndGrow');
-      }
-      */
-
-      // 如果claimableRewards发生变化，则添加动画类
-      if (rewardsRef.current) {
-        rewardsRef.current.classList.add('flashAndGrow');
-        setTimeout(() => {
-            rewardsRef.current?.classList.remove('flashAndGrow');
-        }, 2000);
-      }
-      
-      
       setClaimableRewards(stakeInfo[1]);
 
       // 设置定时器每refreshtime秒刷新一次数据，在异步操作完成后再设置下一个定时器
@@ -155,7 +138,7 @@ const Stake: NextPage = () => {
             <div className={styles.tokenItem}>
               <h3 className={styles.tokenLabel}>Current Rewards</h3>
               <p className={styles.tokenValue}>
-                <b ref={rewardsRef}>
+                <b>
                   {!claimableRewards
                     ? "Loading..."
                     : ethers.utils.formatUnits(claimableRewards, 18)}

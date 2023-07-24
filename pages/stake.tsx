@@ -53,16 +53,14 @@ const Stake: NextPage = () => {
     async function loadClaimableRewards() {
       const stakeInfo = await contract?.call("getStakeInfo", [address]);
       setClaimableRewards(stakeInfo[1]);
+
+      // 设置定时器每refreshtime秒刷新一次数据，在异步操作完成后再设置下一个定时器
+      timer = setTimeout(loadClaimableRewards, refreshtime);
     }
 
     loadClaimableRewards();
-
-    // 设置定时器每refreshtime秒刷新一次数据，在异步操作完成后再设置下一个定时器
-    timer = setTimeout(loadClaimableRewards, refreshtime);
-
     // 在组件卸载时清除定时器
     return () => clearTimeout(timer);
-
   }, [address, contract]);
 
   async function stakeNft(id: string) {

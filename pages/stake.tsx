@@ -68,7 +68,7 @@ const Stake: NextPage = () => {
           rewardsRef.current.classList.add('flashAndGrow');
           setTimeout(() => {
               rewardsRef.current?.classList.remove('flashAndGrow');
-          }, 1000);
+          }, 2000);
         }
       }
       

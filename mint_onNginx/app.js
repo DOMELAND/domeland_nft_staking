@@ -700,6 +700,9 @@ async function getCurrentAddress() {
 let isConnected = false;
 let mintPrice = 120000000000000000; // 0.12 eth
 
+const arbchainID = 42161;
+const hexarbchainID = web3.utils.toHex(arbchainID);
+
 let formattedMintPrice = web3.utils.fromWei(mintPrice.toString(), 'ether');
 
 infoMessage.textContent = 'Please Connect Wallet First !!! ';
@@ -721,13 +724,11 @@ async function connectWallet() {
 
 	  } else if (window.ethereum) {
 		const chainId = await window.ethereum.request({ method: 'eth_chainId' });
-		if (chainId !== '0xa4b1') { // Check if current chain is Arbitrum Main Net (chainId: 0xa4b1)
-	//	if (chainId !== '0x66eed') { // Check if current chain is Arbitrum Test Net (chainId: 0x66eed)
-		  const switchNetwork = confirm('Switch Network to Arbitrum , Confirm Pls？');
+		if (chainId !== hexarbchainID) { // Check if current chain is Arbitrum Main Net (chainId: 0xa4b1)
+		  const switchNetwork = confirm('Switch Network to Arbitrum , Confirm？');
 		  if (switchNetwork) {
 			try {
-			  await window.ethereum.request({ method: 'wallet_switchEthereumChain', params: [{ chainId: '0xa4b1' }] });
-	//		  await window.ethereum.request({ method: 'wallet_switchEthereumChain', params: [{ chainId: '0x66eed' }] });			  
+			  await window.ethereum.request({ method: 'wallet_switchEthereumChain', params: [{ chainId: hexarbchainID }] });			  
 			} catch (error) {
 			  console.error('Swich Network Error:', error);
 			  infoMessage.textContent = 'Swich Network Fail';

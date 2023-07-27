@@ -10,8 +10,20 @@
   <link rel="stylesheet" href="app.css">
 
   <script>
+
+    // 初始化 web3
+  let web3;
+  if (typeof window.ethereum !== 'undefined') {
+    web3 = new Web3(window.ethereum);
+  } else {
+    alert('Install MetaMask First!');
+  }
+
+  const arbchainID = 42161;    // Arbitrum Main Network
+  const hexarbchainID = web3.utils.toHex(arbchainID);
+
   //  ARB MAIN NET
-  window.ethereum.request({ method: 'wallet_addEthereumChain', params: [{ chainId: '0xa4b1', chainName: 'Arbitrum', rpcUrls: ['https://arb1.arbitrum.io/rpc'], blockExplorerUrls: ['https://arbiscan.io/'] }] });
+  window.ethereum.request({ method: 'wallet_addEthereumChain', params: [{ chainId: hexarbchainID, chainName: 'Arbitrum One', rpcUrls: ['https://arb1.arbitrum.io/rpc'], blockExplorerUrls: ['https://explorer.arbitrum.io'] }] });
  
   //  ARB TEST NET
   // window.ethereum.request({ method: 'wallet_addEthereumChain', params: [{ chainId: '0x66eed', chainName: 'Arbitrum Goerli', rpcUrls: ['https://goerli-rollup.arbitrum.io/rpc'], blockExplorerUrls: ['https://testnet.arbiscan.io/'] }] });

@@ -9,15 +9,10 @@
   <script src="https://cdn.jsdelivr.net/npm/web3@1.6.1/dist/web3.min.js"></script>
   <link rel="stylesheet" href="app.css">
 
-  <script>
+  <!-- index.html -->
+<script src="./app.js"></script>
 
-    // 初始化 web3
-  let web3;
-  if (typeof window.ethereum !== 'undefined') {
-    web3 = new Web3(window.ethereum);
-  } else {
-    alert('Install MetaMask First!');
-  }
+  <script>
 
   const arbchainID = 42161;    // Arbitrum Main Network
   const hexarbchainID = web3.utils.toHex(arbchainID);
@@ -73,7 +68,5 @@
     </div>
     <p id="info-message" class="yellow-text"></p>
   </main>
-<!-- index.html -->
-<script src="./app.js"></script>
 </body>
 </html>

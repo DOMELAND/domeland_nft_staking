@@ -725,7 +725,7 @@ async function connectWallet() {
 	  } else if (window.ethereum) {
 		const chainId = await window.ethereum.request({ method: 'eth_chainId' });
 		if (chainId !== hexarbchainID) { // Check if current chain is Arbitrum Main Net (chainId: 0xa4b1)
-		  const switchNetwork = confirm('Switch Network to Arbitrum , Confirm？');
+		  const switchNetwork = confirm('Switch Network to Arbitrum One ?');
 		  if (switchNetwork) {
 			try {
 			  await window.ethereum.request({ method: 'wallet_switchEthereumChain', params: [{ chainId: hexarbchainID }] });			  

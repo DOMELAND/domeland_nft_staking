@@ -14,9 +14,6 @@
 
   <script>
 
-  const arbchainID = 42161;    // Arbitrum Main Network
-  const hexarbchainID = web3.utils.toHex(arbchainID);
-
   //  ARB MAIN NET
   window.ethereum.request({ method: 'wallet_addEthereumChain', params: [{ chainId: hexarbchainID, chainName: 'Arbitrum One', rpcUrls: ['https://arb1.arbitrum.io/rpc'], blockExplorerUrls: ['https://explorer.arbitrum.io'] }] });
  

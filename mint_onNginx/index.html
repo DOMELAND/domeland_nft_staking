@@ -10,19 +10,16 @@
   <link rel="stylesheet" href="app.css">
 
   <script>
-
-  //  ARB MAIN NET
-  window.ethereum.request({ method: 'wallet_addEthereumChain', params: [{ chainId: '0xA4B1', chainName: 'Arbitrum One', rpcUrls: ['https://arb1.arbitrum.io/rpc'], blockExplorerUrls: ['https://explorer.arbitrum.io'] }] });
- 
-  //  ARB TEST NET
-  // window.ethereum.request({ method: 'wallet_addEthereumChain', params: [{ chainId: '0x66eed', chainName: 'Arbitrum Goerli', rpcUrls: ['https://goerli-rollup.arbitrum.io/rpc'], blockExplorerUrls: ['https://testnet.arbiscan.io/'] }] });
- </script>
+    //  ARB MAIN NET
+  window.ethereum.request({ method: 'wallet_addEthereumChain', params: [{ chainId: '0xa4b1', chainName: 'Arbitrum One', rpcUrls: ['https://arb1.arbitrum.io/rpc'], blockExplorerUrls: ['https://arbiscan.io/'] }] });
+   
+   </script>
 </head>
 <body>
   <div class="connect-section">
     <button id="connect-wallet-button" class="connect-button">Connect Wallet</button>
     <div id="wallet-info" class="not-connected">
-      <p>ADDR: <span id="wallet-address">NOT Connected</span></p>
+      <p>ADDR: <span id="wallet-address">NOT CONNCT</span></p>
       <p>BALANCE: <span id="wallet-balance">0</span> ETH</p>
     </div>
   </div>

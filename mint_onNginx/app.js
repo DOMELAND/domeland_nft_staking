@@ -789,8 +789,8 @@ async function mintNFT(mintAmount) {
 		  infoMessage.textContent = 'TX Sended,Waiting Confirmation...';
 		})
 		.on('confirmation', (confirmationNumber, receipt) => {
-		  console.log('确认号:', confirmationNumber);
-		  console.log('收据:', receipt);
+		  console.log('Confirmation Num:', confirmationNumber);
+		  console.log('Receipt:', receipt);
 		  infoMessage.textContent = 'Mint NFT Sucdessful!';
 		})
 		.on('error', (error) => {

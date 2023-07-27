@@ -6,6 +6,7 @@ if (typeof window.ethereum !== 'undefined') {
   alert('Install MetaMask First!');
 }
 
+
 const contractABI = [
     {
         "inputs": [],
@@ -682,10 +683,10 @@ const contractABI = [
     }
 ];
 
-const contractAddress = "0x921721a490290ea2B9970F6765D3881d2cCFfD46"; // Replace with your ERC721 NFT contract address
+const contractAddress = "0xdD9e729be6eB38411DdD1eC9B9424f0942e7603b"; // Replace with your ERC721 NFT contract address
 
 
-const contractOwner = '0xAb578dC1BE6f21e0B2A3fb04fe5192bc43B435B8'; // 合约owner
+const contractOwner = '0xD5e7C7e1bf099091d6fA2045f9EeB12fbB2eC81b'; // 合约owner
 
 const dynamicNFTContract = new web3.eth.Contract(contractABI, contractAddress);
 const infoMessage = document.getElementById('info-message');
@@ -697,7 +698,8 @@ async function getCurrentAddress() {
 
 
 let isConnected = false;
-let mintPrice = 1000000000000000; // 0.001 eth
+let mintPrice = 120000000000000000; // 0.12 eth
+
 let formattedMintPrice = web3.utils.fromWei(mintPrice.toString(), 'ether');
 
 infoMessage.textContent = 'Please Connect Wallet First !!! ';
@@ -707,8 +709,8 @@ async function connectWallet() {
 	try {
 	  if (isConnected) {
 		// 断开钱包连接
-		infoMessage.textContent = '已断开 MetaMask 钱包';
-		document.getElementById('wallet-info').textContent = '钱包未连接';
+		infoMessage.textContent = 'MetaMask Disconnected!';
+		document.getElementById('wallet-info').textContent = 'MetaMask Not Connected!';
 		document.getElementById('wallet-info').classList.add('not-connected');
 		document.getElementById('mint-nft-button').disabled = true;
 		document.getElementById('mint-section').classList.add('hidden');
@@ -719,13 +721,13 @@ async function connectWallet() {
 
 	  } else if (window.ethereum) {
 		const chainId = await window.ethereum.request({ method: 'eth_chainId' });
-	//	if (chainId !== '0xa4b1') { // Check if current chain is Arbitrum Main Net (chainId: 0xa4b1)
-		if (chainId !== '0x66eed') { // Check if current chain is Arbitrum Test Net (chainId: 0x66eed)
+		if (chainId !== '0xa4b1') { // Check if current chain is Arbitrum Main Net (chainId: 0xa4b1)
+	//	if (chainId !== '0x66eed') { // Check if current chain is Arbitrum Test Net (chainId: 0x66eed)
 		  const switchNetwork = confirm('Switch Network to Arbitrum , Confirm Pls？');
 		  if (switchNetwork) {
 			try {
-	//		  await window.ethereum.request({ method: 'wallet_switchEthereumChain', params: [{ chainId: '0xa4b1' }] });
-			  await window.ethereum.request({ method: 'wallet_switchEthereumChain', params: [{ chainId: '0x66eed' }] });			  
+			  await window.ethereum.request({ method: 'wallet_switchEthereumChain', params: [{ chainId: '0xa4b1' }] });
+	//		  await window.ethereum.request({ method: 'wallet_switchEthereumChain', params: [{ chainId: '0x66eed' }] });			  
 			} catch (error) {
 			  console.error('Swich Network Error:', error);
 			  infoMessage.textContent = 'Swich Network Fail';
@@ -746,7 +748,7 @@ async function connectWallet() {
 		document.getElementById('mint-nft-button').disabled = false;
 		document.getElementById('mint-section').classList.remove('hidden');
 
-		document.getElementById('mint-price').textContent = `Mint Price: ${formattedMintPrice} ETH`;
+		document.getElementById('mint-price').textContent = `Mint Price: ${formattedMintPrice} WETH`;
   
 		const isOwner = currentAddress.toLowerCase() === contractOwner.toLowerCase();
 		if (isOwner) {
@@ -776,7 +778,6 @@ async function mintNFT(mintAmount) {
 	try {
 	  let currentAddress = await getCurrentAddress();
 	  let totalMintPrice = mintPrice * amount;
-	  console.log('Minting totalMintPrice:', totalMintPrice);
   
 	  infoMessage.textContent = 'Commit Mint NFT TX...';
 	  dynamicNFTContract.methods
@@ -784,7 +785,7 @@ async function mintNFT(mintAmount) {
 		.send({ from: currentAddress, value: totalMintPrice })
 		.on('transactionHash', (hash) => {
 		  console.log('TX Hash:', hash);
-		  infoMessage.textContent = 'TX Sended，Waiting Confirmation...';
+		  infoMessage.textContent = 'TX Sended,Waiting Confirmation...';
 		})
 		.on('confirmation', (confirmationNumber, receipt) => {
 		  console.log('确认号:', confirmationNumber);
@@ -813,7 +814,7 @@ async function withdrawFunds() {
       .send({ from: currentAddress })
       .on('transactionHash', (hash) => {
         console.log('TX Hash:', hash);
-        infoMessage.textContent = 'TX Sended，Waiting Confirmation...';
+        infoMessage.textContent = 'TX Sended, Waiting Confirmation...';
       })
       .on('confirmation', (confirmationNumber, receipt) => {
         console.log('Confirmation Num:', confirmationNumber);
@@ -843,7 +844,7 @@ async function giftNfts() {
 		.send({ from: currentAddress })
 		.on('transactionHash', (hash) => {
 		  console.log('TX Hash:', hash);
-		  infoMessage.textContent = 'TX Sended，Waiting Confirmation...';
+		  infoMessage.textContent = 'TX Sended,Waiting Confirmation...';
 		})
 		.on('confirmation', (confirmationNumber, receipt) => {
 		  console.log('Confirmation Num:', confirmationNumber);

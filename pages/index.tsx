@@ -19,7 +19,6 @@ const Home: NextPage = () => {
         <div
           className={styles.optionSelectBox}
           role="button"
-         // onClick={() => router.push(`/mint`)}
          onClick={()=>{window.location.href="https://app.domeland.vip/mint"}}
         >
           {/* Mint a new NFT */}

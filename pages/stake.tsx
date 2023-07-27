@@ -19,7 +19,7 @@ import {
 } from "../consts/contractAddresses";
 import styles from "../styles/Home.module.css";
 
-const tokenAddress = "0x866f63535993887A78234e16fE3c88298E81Ac1c";
+const tokenAddress = "0xF9d7456BB73ceA2D3EC8E2de3aFD02eeF64ec668";
 const tokenSymbol = "DLD";  // the token symbol
 const tokenDecimals = 18;  // the token decimals
 const tokenImage = "http://placehold.it/350x350";  // the token image
@@ -158,7 +158,7 @@ const Stake: NextPage = () => {
             action={(contract) => contract.call("claimRewards")}
             contractAddress={stakingContractAddress}
           >
-            Withdraw
+            Claim
           </Web3Button>
 
           <hr className={`${styles.divider} ${styles.spacerTop}`} />
@@ -174,7 +174,7 @@ const Stake: NextPage = () => {
           </div>
 
           <hr className={`${styles.divider} ${styles.spacerTop}`} />
-          <h2 className={styles.h2}>Your Freed DOMELAND NFTs</h2>
+          <h2 className={styles.h2}>Your Free DOMELAND NFTs</h2>
           <div className={styles.nftBoxGrid}>
             {ownedNfts?.map((nft) => (
               <div className={styles.nftBox} key={nft.metadata.id.toString()}>

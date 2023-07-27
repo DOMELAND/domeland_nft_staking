@@ -28,32 +28,33 @@ function MyApp({ Component, pageProps }: AppProps) {
     <ThirdwebProvider 
     activeChain={{
       // === Required information for connecting to the network === \\
-      chainId: 421613, // Chain ID of the network
+      chainId: 42161, // Chain ID of the network
       // Array of RPC URLs to use
-      rpc: ["https://goerli-rollup.arbitrum.io/rpc"],
+      rpc: ["https://arb1.arbitrum.io/rpc"],
     
       // === Information for adding the network to your wallet (how it will appear for first time users) === \\
       // Information about the chain's native currency (i.e. the currency that is used to pay for gas)
       nativeCurrency: {
         decimals: 18,
-        name: "Arbiturm Goerli",
-        symbol: "ARBG",
+        name: "Ether",
+        symbol: "ETH",
       },
-      shortName: "Arbitrum Goerli", // Display value shown in the wallet UI
-      slug: "arbgo", // Display value shown in the wallet UI
-      testnet: true, // Boolean indicating whether the chain is a testnet or mainnet
-      chain: "arbitrum-goerli", // Name of the network
-      name: "Arbitrum Goerli Testnet", // Name of the network
+      name: "Arbitrum One", // Name of the network
+      shortName: "arb1", // Display value shown in the wallet UI
+      slug: "arbitrum", // Display value shown in the wallet UI
+      testnet: false, // Boolean indicating whether the chain is a testnet or mainnet
+      chain: "ETH", // Name of the network
+
     }}
     dAppMeta={{
-        name: "DOMEStaker",
+        name: "Staker",
         description: "Domeland Staker",
-        logoUrl: "https://twitter.com/0xOffchain",
+        logoUrl: "https://twitter.com/0xOffchainlabs",
         url: "https://app.domeland.vip",
         isDarkMode: true,
       }}
     storageInterface={storage}
-    clientId="e7ec4f3dd55f91ca9a3f313df231ddb4"
+    clientId="e7e894443fc2b0540f72eea355c5423f"
     authConfig={{
       authUrl: "/",
       domain: "https://app.domeland.vip",

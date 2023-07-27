@@ -9,13 +9,10 @@
   <script src="https://cdn.jsdelivr.net/npm/web3@1.6.1/dist/web3.min.js"></script>
   <link rel="stylesheet" href="app.css">
 
-  <!-- index.html -->
-<script src="./app.js"></script>
-
   <script>
 
   //  ARB MAIN NET
-  window.ethereum.request({ method: 'wallet_addEthereumChain', params: [{ chainId: hexarbchainID, chainName: 'Arbitrum One', rpcUrls: ['https://arb1.arbitrum.io/rpc'], blockExplorerUrls: ['https://explorer.arbitrum.io'] }] });
+  window.ethereum.request({ method: 'wallet_addEthereumChain', params: [{ chainId: '0xA4B1', chainName: 'Arbitrum One', rpcUrls: ['https://arb1.arbitrum.io/rpc'], blockExplorerUrls: ['https://explorer.arbitrum.io'] }] });
  
   //  ARB TEST NET
   // window.ethereum.request({ method: 'wallet_addEthereumChain', params: [{ chainId: '0x66eed', chainName: 'Arbitrum Goerli', rpcUrls: ['https://goerli-rollup.arbitrum.io/rpc'], blockExplorerUrls: ['https://testnet.arbiscan.io/'] }] });
@@ -65,5 +62,8 @@
     </div>
     <p id="info-message" class="yellow-text"></p>
   </main>
+
+  <!-- index.html -->
+  <script src="./app.js"></script>
 </body>
 </html>

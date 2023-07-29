@@ -14,6 +14,7 @@ const gatewayUrls = {
     "https://cloudflare-ipfs.com/ipfs/",
     "https://ipfs.io/ipfs/",
     "https://gateway.ipfscdn.io/ipfs/",
+    "https://nftstorage.link/ipfs/",
   ],
 };
 

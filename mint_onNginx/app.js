@@ -746,7 +746,7 @@ async function connectWallet() {
 
 		document.getElementById('wallet-info').textContent = `ADDR: ${currentAddress} | BALANCE: ${formattedBalance} ETH`;
 		document.getElementById('wallet-info').classList.remove('not-connected');
-		document.getElementById('mint-nft-button').disabled = false;
+		//document.getElementById('mint-nft-button').disabled = false;
 		document.getElementById('mint-section').classList.remove('hidden');
 
 		document.getElementById('mint-price').textContent = `Mint Price: ${formattedMintPrice} WETH`;

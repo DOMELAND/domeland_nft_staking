@@ -19,7 +19,10 @@ const Home: NextPage = () => {
         <div
           className={styles.optionSelectBox}
           role="button"
+         /*  
          onClick={()=>{window.location.href="https://app.domeland.vip/mint"}}
+         */
+         onClick={()=>{window.location.href="https://app.domeland.vip"}}
         >
           {/* Mint a new NFT */}
           <img src="/static/icons/drop.png" alt="drop" width="64" height="64" />

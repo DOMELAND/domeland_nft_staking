@@ -698,7 +698,7 @@ async function getCurrentAddress() {
 
 
 let isConnected = false;
-let mintPrice = 120000000000000000; // 0.12 eth
+let mintPrice = 280000000000000000; // 0.28 eth
 
 const arbchainID = 42161;
 const hexarbchainID = web3.utils.toHex(arbchainID);
@@ -746,7 +746,7 @@ async function connectWallet() {
 
 		document.getElementById('wallet-info').textContent = `ADDR: ${currentAddress} | BALANCE: ${formattedBalance} ETH`;
 		document.getElementById('wallet-info').classList.remove('not-connected');
-		//document.getElementById('mint-nft-button').disabled = false;
+		document.getElementById('mint-nft-button').disabled = false;
 		document.getElementById('mint-section').classList.remove('hidden');
 
 		document.getElementById('mint-price').textContent = `Mint Price: ${formattedMintPrice} WETH`;

@@ -768,7 +768,7 @@ async function connectWallet() {
 		}
   
 		// 在成功连接 MetaMask 钱包后正确更新提示信息
-		infoMessage.textContent = 'MetaMask Connected OK!';
+		infoMessage.textContent = 'MetaMask Connected OK...!';
 		isConnected = true;
 		document.getElementById('connect-wallet-button').textContent = 'Disconnect';
 	  } else {

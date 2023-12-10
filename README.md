@@ -23,8 +23,6 @@ npx thirdweb create --template nft-staking-app
 - Deposit the tokens into the NFT Staking contract.
 - Update the information in the [contractAddresses.ts](./consts/contractAddresses.ts) file to
 
-## How To Stake Guide
-- Setup NFT Stake https://blog.thirdweb.com/guides/how-to-allow-users-to-stake-their-nfts-and-earn-rewards/
 
 ## Join our Discord!
 
@@ -53,3 +51,6 @@ git push -u origin main
 
 …or import code from another repository
 You can initialize this repository with code from a Subversion, Mercurial, or TFS project.
+
+## How To Stake Guide
+- Setup NFT Stake https://blog.thirdweb.com/guides/how-to-allow-users-to-stake-their-nfts-and-earn-rewards/c

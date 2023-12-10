@@ -19,12 +19,12 @@ import {
 } from "../consts/contractAddresses";
 import styles from "../styles/Home.module.css";
 
-const tokenAddress = "0xF9d7456BB73ceA2D3EC8E2de3aFD02eeF64ec668";
+const tokenAddress = "0x5aE4a1c27BCd391D09772ac05061AB510febCFc3";
 const tokenSymbol = "DLD";  // the token symbol
 const tokenDecimals = 18;  // the token decimals
 const tokenImage = "http://placehold.it/350x350";  // the token image
 
-const refreshtime = 5000;
+const refreshtime = 60000;   // 60 sec
 
 
 const Stake: NextPage = () => {

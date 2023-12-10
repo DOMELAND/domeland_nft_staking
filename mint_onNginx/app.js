@@ -715,7 +715,7 @@ const hexarbchainID = web3.utils.toHex(arbchainID);
 
 let formattedMintPrice = web3.utils.fromWei(mintPrice.toString(), 'ether');
 
-infoMessage.textContent = 'Please Connect Wallet First !!! ';
+infoMessage.textContent = 'Please Connect Wallet First ...! ';
 
 
 async function connectWallet() {

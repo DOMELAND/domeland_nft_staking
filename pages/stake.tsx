@@ -131,7 +131,7 @@ const Stake: NextPage = () => {
             }}
             onClick={importToken}
           >
-            Import $DLD
+            Import New $DLD
           </button>
 
           <div className={styles.tokenGrid}>

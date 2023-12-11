@@ -14,7 +14,8 @@ const Home: NextPage = () => {
          <link rel="icon" href="/static/favicon.ico" />
       </Head>
       {/* Top Section */}
-      <h1 className={styles.h1}>0xOffchain Labs - DomeLand Staking Remix</h1>
+      <h1 className={styles.h1}>0xOffchain Labs - DomeLand Staking</h1>
+      <h1 className={styles.h2}>Remix Version</h1>
       <div className={styles.nftBoxGrid}>
         <div
           className={styles.optionSelectBox}

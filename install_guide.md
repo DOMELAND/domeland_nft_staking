@@ -1,5 +1,6 @@
 npm install
 npm run build
-cp -ar mint_onNginx/* /var/www/app-domeland/mint/
+cp -ar ~/domeland_nft_staking/mint_onNginx/* /var/www/app-domeland/mint/
+cp -ar ~/domeland_nft_staking/mint_onNginx/images /var/www/app-domeland/static/images
 
 npm run pm2

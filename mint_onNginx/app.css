@@ -16,7 +16,7 @@ body {
 /* ----------- */
 body::before {
   content: "";
-  background-image: url('./images/moon.webp');
+  background-image: url('./images/moon1.webp');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: bottom;
